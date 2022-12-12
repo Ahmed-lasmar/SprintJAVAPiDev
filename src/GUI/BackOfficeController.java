@@ -1353,6 +1353,26 @@ public class BackOfficeController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
+    @FXML
+    private void envoyer(ActionEvent event) {
+        Entretien app = home.getSelectionModel().getSelectedItem();
+        String text="Bonjour Mr/Mme ";
+        String firstname=app.getFirstname_candidat()+" ";
+        String name=app.getName_candidat()+",\n";
+        String a ="Votre entretien sera fixé au date ";
+        String date = app.getDate_entretien().toString() +" à ";
+        String h = app.getHeure()+".\n";
+        String cor= "Cordialement.";
+        String all=text + firstname+name+a+date+h+cor;
+        try {
+            //MailServiceImpl.mailsent("racem.benamar@esprit.tn","Fixation date et heure entreiten",text,firstname,name,a,date,h,cor);
+            GUI.MailServiceImpl.mailsent("racem.benamar@esprit.tn","Fixation date et heure entreiten",all);
+        } catch (Exception ex) {
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
 
     
     @FXML

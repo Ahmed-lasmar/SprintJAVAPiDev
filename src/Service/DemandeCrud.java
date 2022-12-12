@@ -5,7 +5,7 @@
  */
 package service;
 
-import model.Demande;
+import Model.Demande;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
