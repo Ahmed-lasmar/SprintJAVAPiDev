@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BackOfficeController">
+    <stylesheets>
+        <URL value="@/css/style.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="5.0" layoutY="5.0" prefHeight="900.0" prefWidth="1500.0">
+         <children>
+            <AnchorPane id="AnchorPane" fx:id="geentretien" layoutX="234.0" layoutY="60.0" prefHeight="772.0" prefWidth="1270.0" visible="false">
+               <children>
+                  <TableView fx:id="home" layoutX="152.0" layoutY="140.0" onMouseClicked="#selectApp1" prefHeight="224.0" prefWidth="595.0">
+                     <columns>
+                        <TableColumn fx:id="id_col" prefWidth="40.0" text="ID" />
+                        <TableColumn fx:id="id_candidat_col" prefWidth="84.0" text="ID CANDIDAT" />
+                        <TableColumn fx:id="name_col" prefWidth="85.60009765625" text="NOM" />
+                        <TableColumn fx:id="firstname_col" prefWidth="116.00006103515625" text="PRENOM" />
+                        <TableColumn fx:id="date_col" prefWidth="90.4000244140625" text="DATE" />
+                        <TableColumn fx:id="hour_col" prefWidth="64.0" text="HEURE" />
+                        <TableColumn fx:id="participant_col" prefWidth="110.4000244140625" text="PARTCIPANT" />
+                     </columns>
+                  </TableView>
+                  <AnchorPane layoutY="3.0" prefHeight="642.0" prefWidth="165.0" />
+                  <Button fx:id="add_btn" layoutX="546.0" layoutY="483.0" mnemonicParsing="false" onAction="#add_entretien" prefHeight="26.0" prefWidth="150.0" text="Ajouter" />
+                  <Button fx:id="delete_btn" layoutX="170.0" layoutY="106.0" mnemonicParsing="false" onAction="#delete_entretien" prefHeight="26.0" prefWidth="103.0" text="Supprimer" />
+                  <Button fx:id="modifier_btn" layoutX="564.0" layoutY="519.0" mnemonicParsing="false" onAction="#modify_entretien" prefHeight="26.0" prefWidth="113.0" text="Modifier" />
+                  <TextField fx:id="name_label" layoutX="246.0" layoutY="376.0" />
+                  <TextField fx:id="year_label" layoutX="246.0" layoutY="483.0" prefHeight="26.0" prefWidth="55.0" />
+                  <TextField fx:id="firstname_label" layoutX="246.0" layoutY="428.0" />
+                  <TextField fx:id="hour_label" layoutX="546.0" layoutY="376.0" />
+                  <Label layoutX="196.0" layoutY="380.0" text="Nom" />
+                  <Label layoutX="189.0" layoutY="432.0" text="Prénom" />
+                  <Label layoutX="197.0" layoutY="487.0" text="Date" />
+                  <TextField fx:id="month_label" layoutX="305.0" layoutY="482.0" prefHeight="26.0" prefWidth="42.0" />
+                  <TextField fx:id="day_label" layoutX="352.0" layoutY="482.0" prefHeight="26.0" prefWidth="42.0" />
+                  <Label layoutX="490.0" layoutY="380.0" text="Heure" />
+                  <Label layoutX="478.0" layoutY="432.0" text="Participant" />
+                  <TextField fx:id="participant_label" layoutX="546.0" layoutY="428.0" />
+                  <Button fx:id="evaluer_btn" layoutX="769.0" layoutY="106.0" mnemonicParsing="false" onAction="#evaluer" prefHeight="26.0" prefWidth="103.0" text="Evaluer" />
+                  <TableView fx:id="home2" layoutX="746.0" layoutY="140.0" prefHeight="224.0" prefWidth="150.0">
+                     <columns>
+                        <TableColumn fx:id="note_col" prefWidth="75.0" text="NOTE" />
+                        <TableColumn fx:id="avis_col" prefWidth="75.0" text="AVIS" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <TextField fx:id="id_entretien_tf" disable="true" layoutX="732.0" layoutY="605.0" opacity="0.0" visible="false" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="GePrime" layoutX="233.0" layoutY="60.0" minHeight="0.0" minWidth="0.0" prefHeight="840.0" prefWidth="1269.0" visible="false">
+               <children>
+                  <Button fx:id="ajouter_prime_2" layoutX="763.0" layoutY="64.0" mnemonicParsing="false" onAction="#ajouter_prime" prefHeight="47.0" prefWidth="132.0" text="Ajouter" />
+                  <Button fx:id="supprimer_prime_2" layoutX="764.0" layoutY="138.0" mnemonicParsing="false" onAction="#supprimer_prime" prefHeight="47.0" prefWidth="129.0" text="Supprimer" />
+                  <Button fx:id="modifier_prime_2" layoutX="764.0" layoutY="219.0" mnemonicParsing="false" onAction="#modifier_prime" prefHeight="54.0" prefWidth="130.0" text="Modifier" />
+                  <Label fx:id="id_prime_label_2" layoutX="232.0" layoutY="102.0" text="ID_Prime" />
+                  <Label fx:id="type_prime_label_2" layoutX="232.0" layoutY="153.0" text="Type_Prime" />
+                  <Label fx:id="valeur_prime_label_2" layoutX="234.0" layoutY="197.0" text="Valeur_Prime" />
+                  <Label fx:id="date_prime_label_2" layoutX="238.0" layoutY="246.0" text="Date_Prime" />
+                  <TextField fx:id="id_prime_textfield_2" layoutX="364.0" layoutY="98.0" />
+                  <TextField fx:id="valeur_prime_textfield_2" layoutX="364.0" layoutY="193.0" />
+                  <TextField fx:id="type_prime_textfield_2" layoutX="364.0" layoutY="140.0" />
+                  <TableView fx:id="tableau_prime_2" layoutX="300.0" layoutY="388.0" onMouseClicked="#prime_selected" prefHeight="217.0" prefWidth="380.0">
+                     <columns>
+                        <TableColumn fx:id="id_prime_colonne_2" prefWidth="75.0" text="ID_Prime" />
+                        <TableColumn fx:id="type_prime_colonne_2" prefWidth="92.0" text="Type_Prime" />
+                        <TableColumn fx:id="valeur_prime_colonne_2" prefWidth="103.99996948242188" text="Valeur_Prime" />
+                        <TableColumn fx:id="date_prime_colonne_2" prefWidth="108.0" text="Date_Prime" />
+                     </columns>
+                  </TableView>
+                  <DatePicker fx:id="date_prime_textfield_2" layoutX="364.0" layoutY="242.0" />
+                  <Label fx:id="nombre_heure_2" layoutX="238.0" layoutY="307.0" text="Nombre_Heure" />
+                  <TextField fx:id="nombre_heure_textfield_2" layoutX="364.0" layoutY="303.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane id="AnchorPane" fx:id="offreadmin" layoutX="233.0" layoutY="50.0" prefHeight="851.0" prefWidth="1136.0" visible="false">
+               <children>
+                  <AnchorPane layoutX="338.0" prefHeight="608.0" prefWidth="685.0">
+                     <children>
+                        <TableView fx:id="table_view1" layoutX="20.0" layoutY="41.0" onMouseClicked="#selectItem" prefHeight="780.0" prefWidth="891.0">
+                           <columns>
+                              <TableColumn fx:id="col_id" prefWidth="141.0" text="ID" />
+                              <TableColumn fx:id="col_nom" prefWidth="168.0" text="Nom offre" />
+                              <TableColumn fx:id="col_desc" prefWidth="171.0" text="description" />
+                              <TableColumn fx:id="col_skills" prefWidth="155.0" text="skills" />
+                              <TableColumn fx:id="col_picture" prefWidth="255.0" text="picture" />
+                           </columns>
+                        </TableView>
+                        <Separator layoutX="3.0" orientation="VERTICAL" prefHeight="608.0" prefWidth="24.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="left_main1" prefHeight="608.0" prefWidth="332.0">
+                     <children>
+                        <ComboBox fx:id="skills" layoutX="132.0" layoutY="207.0" onAction="#comboBox" prefWidth="150.0" />
+                        <Label layoutX="35.0" layoutY="121.0" prefHeight="31.0" prefWidth="84.0" text="Nom Offre:" />
+                        <Label layoutX="35.0" layoutY="161.0" prefHeight="38.0" prefWidth="115.0" text="Description:" />
+                        <Label layoutX="35.0" layoutY="212.0" text="Skills:" />
+                        <TextField fx:id="nomlab" layoutX="132.0" layoutY="121.0" />
+                        <TextField fx:id="desclab" layoutX="132.0" layoutY="165.0" />
+                        <Label layoutX="35.0" layoutY="269.0" text="Offre thumbnail:" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="150.0" layoutX="74.0" layoutY="298.0" stroke="BLACK" strokeType="INSIDE" width="179.0" />
+                        <ImageView fx:id="image_view" fitHeight="150.0" fitWidth="179.0" layoutX="73.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="insert_image1" layoutX="99.0" layoutY="477.0" mnemonicParsing="false" onAction="#insertImage" prefHeight="38.0" prefWidth="135.0" text="Insérer image" textFill="#1e00ff" />
+                        <Label fx:id="file_path1" layoutX="77.0" layoutY="540.0" prefHeight="26.0" prefWidth="187.0" />
+                        <Label layoutX="35.0" layoutY="75.0" prefHeight="31.0" prefWidth="84.0" text="Id Offre:" />
+                        <TextField fx:id="idlab" layoutX="132.0" layoutY="75.0" />
+                     </children>
+                  </AnchorPane>
+                  <Button fx:id="butAjout" layoutX="14.0" layoutY="708.0" mnemonicParsing="false" onAction="#ajouterOffre" prefHeight="58.0" prefWidth="115.0" text="Ajouter" />
+                  <Button fx:id="butModif" layoutX="109.0" layoutY="622.0" mnemonicParsing="false" onAction="#modifierOffre" prefHeight="58.0" prefWidth="115.0" text="Modifier" />
+                  <Button fx:id="buttSupp" layoutX="204.0" layoutY="708.0" mnemonicParsing="false" onAction="#supprimerOffre" prefHeight="58.0" prefWidth="115.0" text="Supprimer" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="GesPai" layoutX="233.0" layoutY="60.0" minHeight="0.0" minWidth="0.0" prefHeight="840.0" prefWidth="1269.0" visible="false">
+               <children>
+                  <DatePicker fx:id="date_textfield" layoutX="250.0" layoutY="288.0" />
+                  <Label fx:id="id_fp_label" layoutX="145.0" layoutY="73.0" text="ID_FP" />
+                  <Label fx:id="id_per_label" layoutX="142.0" layoutY="117.0" text="ID_Per" />
+                  <Label fx:id="salaire_init_label" layoutX="141.0" layoutY="166.0" text="Salaire_init" />
+                  <Label fx:id="id_prime_label" layoutX="145.0" layoutY="202.0" text="ID_Prime" />
+                  <TextField fx:id="total_textfield" layoutX="250.0" layoutY="238.0" prefHeight="26.0" prefWidth="175.0" />
+                  <TextField fx:id="etat_textfield" layoutX="250.0" layoutY="332.0" prefHeight="26.0" prefWidth="175.0" />
+                  <TextField fx:id="id_fp_textfield" layoutX="250.0" layoutY="69.0" prefHeight="26.0" prefWidth="175.0" />
+                  <Label fx:id="salaire_total_label" layoutX="137.0" layoutY="242.0" text="Salaire_total" />
+                  <Label fx:id="date_paiement_label" layoutX="139.0" layoutY="292.0" text="Date_paiement" />
+                  <Label fx:id="etat_paiement_label" layoutX="141.0" layoutY="336.0" text="Etat_paiement" />
+                  <TextField fx:id="id_per_textfield" layoutX="250.0" layoutY="113.0" prefHeight="26.0" prefWidth="175.0" />
+                  <TextField fx:id="init_textfield" layoutX="250.0" layoutY="157.0" prefHeight="26.0" prefWidth="175.0" />
+                  <TextField fx:id="prime_textfield" layoutX="250.0" layoutY="197.0" prefHeight="26.0" prefWidth="175.0" />
+                  <Button fx:id="Statistique" layoutX="727.0" layoutY="290.0" mnemonicParsing="false" onAction="#statistique" prefHeight="52.0" prefWidth="134.0" text="Statistique" />
+                  <Button fx:id="ajouter" layoutX="726.0" layoutY="82.0" mnemonicParsing="false" onAction="#ajouter_fiche_de_paiement" prefHeight="43.0" prefWidth="133.0" text="Ajouter" />
+                  <Button fx:id="supprimer" layoutX="726.0" layoutY="149.0" mnemonicParsing="false" onAction="#supprimer_fiche_de_paie" prefHeight="46.0" prefWidth="134.0" text="Supprimer" />
+                  <Button fx:id="modifier" layoutX="726.0" layoutY="219.0" mnemonicParsing="false" onAction="#modifier_fiche_de_paie" prefHeight="46.0" prefWidth="135.0" text="Modifier" />
+                  <TableView fx:id="paiement_tableau" layoutX="55.0" layoutY="388.0" onMouseClicked="#fiche_de_paie_selected" prefHeight="235.0" prefWidth="663.0">
+                     <columns>
+                        <TableColumn fx:id="id_fp_colonne" prefWidth="75.0" text="ID_FP" />
+                        <TableColumn fx:id="id_per_colonne" prefWidth="75.0" text="ID_Per" />
+                        <TableColumn fx:id="salaire_init_colonne" prefWidth="96.0" text="Salaire_init" />
+                        <TableColumn fx:id="id_prime_colonne" prefWidth="79.20001220703125" text="ID_Prime" />
+                        <TableColumn fx:id="salaire_total_colonne" prefWidth="107.20001220703125" text="Salaire_total" />
+                        <TableColumn fx:id="date_paiement_colonne" prefWidth="101.60003662109375" text="Date_paiement" />
+                        <TableColumn fx:id="etat_paiement_colonne" prefWidth="125.5999633789063" text="Etat_paiement" />
+                     </columns>
+                  </TableView>
+                  <ComboBox fx:id="trie_combobox_1" layoutX="756.0" layoutY="388.0" prefWidth="150.0" promptText="Trie selon" />
+                  <Button fx:id="button_croissant" layoutX="861.0" layoutY="542.0" mnemonicParsing="false" text="Croissant" />
+                  <Button fx:id="button_decroissant" layoutX="744.0" layoutY="542.0" mnemonicParsing="false" text="Decroissant" />
+               </children>
+            </AnchorPane>
+            <AnchorPane id="AnchorPane" fx:id="HomeC" layoutX="233.0" layoutY="58.0" prefHeight="832.0" prefWidth="1089.0" visible="false">
+               <children>
+                  <TableView fx:id="tab" layoutX="120.0" layoutY="86.0" onMouseClicked="#getConData" prefHeight="228.0" prefWidth="523.0">
+                     <columns>
+                        <TableColumn fx:id="c1" minWidth="0.0" prefWidth="0.0" text="id Congé" />
+                        <TableColumn fx:id="c2" minWidth="0.0" prefWidth="0.0" text="id Personne" />
+                        <TableColumn fx:id="c3" prefWidth="98.0" text="date de depot" />
+                        <TableColumn fx:id="c4" prefWidth="124.0" text="Type de demande" />
+                        <TableColumn fx:id="c5" prefWidth="70.0" text="l'etat" />
+                        <TableColumn fx:id="c6" prefWidth="114.0" text="date de depart" />
+                        <TableColumn fx:id="c7" prefWidth="116.0" text="date de retour" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="591.0" layoutY="329.0" mnemonicParsing="false" onAction="#SuppCon" text="Supprimer" />
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="1500.0" spacing="20.0" styleClass="white-background" stylesheets="@../css/style.css">
+               <children>
+                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="192.0" text="WorkVision" textAlignment="CENTER">
+                     <font>
+                        <Font name="Sylfaen" size="36.0" />
+                     </font>
+                  </Label>
+                  <Separator maxHeight="-Infinity" maxWidth="-Infinity" orientation="VERTICAL" prefHeight="36.0" prefWidth="7.0" />
+                  <HBox fx:id="searchbox" alignment="CENTER" maxHeight="-Infinity" prefHeight="47.0" prefWidth="231.0" styleClass="round-Layout" stylesheets="@../css/style.css">
+                     <children>
+                        <TextField fx:id="champ_recherche" prefHeight="26.0" prefWidth="216.0" promptText="chercher votre offre" />
+                     </children>
+                  </HBox>
+                  <ImageView fx:id="searchicon" fitHeight="29.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/search.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/WORKVISION%20Logo%20M.png" />
+                     </image>
+                  </ImageView>
+                  <Pane prefHeight="60.0" prefWidth="570.0" HBox.hgrow="ALWAYS" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="61.0" prefWidth="204.0" text="Radhwen Rmili">
+                           <font>
+                              <Font name="Arial Black" size="15.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/1S3A8853%20(2).jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+            <VBox alignment="TOP_CENTER" layoutY="58.0" prefHeight="832.0" prefWidth="233.0" styleClass="white-background" stylesheets="@../css/style.css">
+               <children>
+                  <VBox prefHeight="539.0" prefWidth="223.0" spacing="5.0">
+                     <children>
+                        <Separator maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="6.0" prefWidth="208.0" />
+                        <Label prefHeight="61.0" prefWidth="204.0" text="Browse">
+                           <font>
+                              <Font name="Arial Black" size="36.0" />
+                           </font>
+                        </Label>
+                        <HBox fx:id="gestionoffres" alignment="CENTER" maxHeight="-Infinity" onMouseClicked="#switchForm" prefHeight="50.0" prefWidth="251.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../css/style.css">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-list-64.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="59.0" prefWidth="150.0" text="Gestion des offres">
+                                 <font>
+                                    <Font name="Arial Black" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="gestionapp" alignment="CENTER" onMouseClicked="#switchForm" prefHeight="50.0" prefWidth="225.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../css/style.css">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-people-64.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="35.0" prefWidth="150.0" text="Gestion des applications">
+                                 <font>
+                                    <Font name="Arial Black" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="GesCon" alignment="CENTER" onMouseClicked="#switchForm" prefHeight="50.0" prefWidth="225.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../css/style.css">
+                           <children>
+                              <HBox fx:id="gestionapp1" alignment="CENTER" onMouseClicked="#switchForm" prefHeight="50.0" prefWidth="225.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../css/style.css">
+                                 <children>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/icons8-people-64.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label prefHeight="35.0" prefWidth="150.0" text="Gestion des Conges">
+                                       <font>
+                                          <Font name="Arial Black" size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children></HBox>
+                        <HBox fx:id="gestionPai" alignment="CENTER" onMouseClicked="#switchForm" prefHeight="46.0" prefWidth="223.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../css/style.css">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-people-64.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="35.0" prefWidth="150.0" text="Gestion des Paiement">
+                                 <font>
+                                    <Font name="Arial Black" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="gestionPrime" alignment="CENTER" onMouseClicked="#switchForm" prefHeight="46.0" prefWidth="223.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../css/style.css">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-people-64.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="35.0" prefWidth="150.0" text="Gestion des Primes">
+                                 <font>
+                                    <Font name="Arial Black" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="gestionentretien" alignment="CENTER" onMouseClicked="#switchForm" prefHeight="46.0" prefWidth="223.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../css/style.css">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-people-64.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="35.0" prefWidth="150.0" text="Gestion des Entretiens">
+                                 <font>
+                                    <Font name="Arial Black" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="gestionformateurs" alignment="CENTER" onMouseClicked="#switchForm" prefHeight="46.0" prefWidth="223.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../css/style.css">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-people-64.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="35.0" prefWidth="150.0" text="Gestion des Formateurs">
+                                 <font>
+                                    <Font name="Arial Black" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="gestionformations" alignment="CENTER" onMouseClicked="#switchForm" prefHeight="46.0" prefWidth="223.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../css/style.css">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icons8-people-64.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="35.0" prefWidth="150.0" text="Gestion des Formations">
+                                 <font>
+                                    <Font name="Arial Black" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="132.0" prefWidth="267.0">
+                     <VBox.margin>
+                        <Insets top="480.0" />
+                     </VBox.margin>
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="196.0" style="-fx-background-color: black;" styleClass="round-Layout" stylesheets="@../css/style.css" text="Se Déconnecter" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <AnchorPane id="AnchorPane" fx:id="appadmin" layoutX="233.0" layoutY="60.0" prefHeight="840.0" prefWidth="1269.0" visible="false">
+               <children>
+                  <AnchorPane layoutX="361.0" prefHeight="600.0" prefWidth="641.0">
+                     <children>
+                        <TableView fx:id="table_view" layoutX="13.0" layoutY="35.0" onMouseClicked="#selectApp" prefHeight="752.0" prefWidth="861.0">
+                           <columns>
+                              <TableColumn fx:id="col_ida" prefWidth="119.0" text="ID" />
+                              <TableColumn fx:id="col_candidat" prefWidth="150.0" text="Candidat" />
+                              <TableColumn fx:id="col_offre" prefWidth="154.0" text="Offre" />
+                              <TableColumn fx:id="col_cv" prefWidth="183.0" text="Etat" />
+                              <TableColumn fx:id="col_etat" prefWidth="254.0" text="CV" />
+                           </columns>
+                        </TableView>
+                        <Separator layoutY="187.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="5.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="left_main" layoutX="-9.0" prefHeight="600.0" prefWidth="375.0">
+                     <children>
+                        <Label layoutX="57.0" layoutY="144.0" text="Candidat:" />
+                        <Label layoutX="57.0" layoutY="188.0" text="Offre:" />
+                        <TextField fx:id="candlab" layoutX="145.0" layoutY="141.0" />
+                        <TextField fx:id="offlab" layoutX="145.0" layoutY="183.0" />
+                        <Label layoutX="74.0" layoutY="541.0" text="etat:" />
+                        <Label layoutX="57.0" layoutY="249.0" text="Deposez  CV du candidat:" />
+                        <ComboBox fx:id="etat" layoutX="127.0" layoutY="536.0" onAction="#comboboxa" prefWidth="150.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="137.0" layoutX="67.0" layoutY="288.0" stroke="BLACK" strokeType="INSIDE" width="269.0" />
+                        <ImageView fx:id="image_viewa" fitHeight="137.0" fitWidth="269.0" layoutX="70.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="insert_image" layoutX="132.0" layoutY="458.0" mnemonicParsing="false" onAction="#insertimage" prefHeight="31.0" prefWidth="111.0" text="insérer image" textFill="#0400ff" />
+                        <Label fx:id="file_path" layoutX="77.0" layoutY="433.0" prefHeight="21.0" prefWidth="249.0" />
+                        <Label layoutX="57.0" layoutY="105.0" text="Candidat:" />
+                        <TextField fx:id="idlaba" layoutX="145.0" layoutY="100.0" />
+                     </children>
+                  </AnchorPane>
+                  <Button fx:id="addbtn" layoutX="14.0" layoutY="690.0" mnemonicParsing="false" onAction="#ajouterApp" prefHeight="60.0" prefWidth="122.0" text="Ajouter" />
+                  <Button fx:id="updatebtn" layoutX="118.0" layoutY="600.0" mnemonicParsing="false" onAction="#modifierApp" prefHeight="63.0" prefWidth="122.0" text="Modifier" />
+                  <Button fx:id="deletebtn" layoutX="229.0" layoutY="692.0" mnemonicParsing="false" onAction="#supprimerApp" prefHeight="58.0" prefWidth="122.0" text="Supprimer" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="geformateur" accessibleRole="TEXT_AREA" layoutX="234.0" layoutY="60.0" minHeight="0.0" minWidth="0.0" prefHeight="866.0" prefWidth="1270.0" visible="false">
+               <children>
+                  <Label layoutX="394.0" layoutY="59.0" text="prenom:" />
+                  <Label layoutX="757.0" layoutY="59.0" text="adresse:" />
+                  <Label layoutX="75.0" layoutY="94.0" text="email:" />
+                  <Label layoutX="409.0" layoutY="94.0" text="tel:" />
+                  <Label layoutX="735.0" layoutY="94.0" text="code postal:" />
+                  <Label layoutX="78.0" layoutY="128.0" text="ville:" />
+                  <Label layoutX="403.0" layoutY="128.0" text="pays:" />
+                  <Label layoutX="762.0" layoutY="128.0" text="status:" />
+                  <Label layoutX="407.0" layoutY="161.0" text="tva:" />
+                  <Label layoutX="81.0" layoutY="195.0" text="bio:" />
+                  <Label layoutX="77.0" layoutY="59.0" text="nom:" />
+                  <Label layoutX="757.0" layoutY="161.0" text="diplome:" />
+                  <Label layoutX="79.0" layoutY="161.0" text="tarif:" />
+                  <TextField fx:id="nomA" layoutX="135.0" layoutY="55.0" />
+                  <TextField fx:id="prenomA" layoutX="462.0" layoutY="55.0" />
+                  <TextField fx:id="adresseA" layoutX="815.0" layoutY="55.0" />
+                  <TextField fx:id="emailA" layoutX="135.0" layoutY="90.0" />
+                  <TextField fx:id="telA" layoutX="462.0" layoutY="90.0" />
+                  <TextField fx:id="CPA" layoutX="815.0" layoutY="90.0" />
+                  <TextField fx:id="VilleA" layoutX="135.0" layoutY="124.0" />
+                  <TextField fx:id="payA" layoutX="462.0" layoutY="124.0" />
+                  <TextField fx:id="statusA" layoutX="815.0" layoutY="124.0" />
+                  <TextField fx:id="tarifA" layoutX="135.0" layoutY="157.0" />
+                  <TextField fx:id="tvaA" layoutX="462.0" layoutY="157.0" />
+                  <TextField fx:id="bioA" layoutX="135.0" layoutY="191.0" />
+                  <TextField fx:id="diplomeA" layoutX="815.0" layoutY="157.0" />
+                  <TableView fx:id="Table_Formateur" layoutX="9.0" layoutY="237.0" onMouseClicked="#select_formateur" prefHeight="200.0" prefWidth="1016.0">
+                     <columns>
+                        <TableColumn fx:id="idCA" prefWidth="34.0" text="id" />
+                        <TableColumn fx:id="nomCA" prefWidth="39.0" text="nom" />
+                        <TableColumn fx:id="prenomCA" prefWidth="56.999969482421875" text="prenom" />
+                        <TableColumn fx:id="adresseCA" prefWidth="58.000030517578125" text="adresse" />
+                        <TableColumn fx:id="emailCA" prefWidth="97.0" text="email" />
+                        <TableColumn fx:id="telCA" minWidth="1.0" prefWidth="72.0" text="tel" />
+                        <TableColumn fx:id="codePCA" prefWidth="72.0" text="codeP" />
+                        <TableColumn fx:id="villeCA" prefWidth="65.0" text="ville" />
+                        <TableColumn fx:id="payCA" prefWidth="51.0" text="pays" />
+                        <TableColumn fx:id="statusCA" prefWidth="61.0" text="status" />
+                        <TableColumn fx:id="terifCA" prefWidth="63.0" text="terif" />
+                        <TableColumn fx:id="tvaCA" prefWidth="55.0" text="tva" />
+                        <TableColumn fx:id="bioCA" prefWidth="212.0" text="bio" />
+                        <TableColumn fx:id="diplomeCA" prefWidth="98.0" text="diplome" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="725.0" layoutY="445.0" mnemonicParsing="false" onMouseClicked="#updateFormateur" text="Modifier">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="517.0" layoutY="445.0" mnemonicParsing="false" onMouseClicked="#deleteFormateur" text="Supprimer">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="333.0" layoutY="444.0" mnemonicParsing="false" onAction="#addFormateur" text="Ajouter">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="geformation1" layoutX="234.0" layoutY="58.0" minHeight="0.0" minWidth="0.0" prefHeight="866.0" prefWidth="1270.0" visible="false">
+               <children>
+                  <Label layoutX="158.0" layoutY="101.0" text="ID:" />
+                  <Label layoutX="109.0" layoutY="147.0" text="ID formateur:" />
+                  <Label layoutX="644.0" layoutY="101.0" text="Date:" />
+                  <Label layoutX="614.0" layoutY="147.0" text=" Nom formation:" />
+                  <Label layoutX="72.0" layoutY="190.0" text="Num collaborateurs:" />
+                  <TextField fx:id="tfID" layoutX="209.0" layoutY="97.0" />
+                  <TextField fx:id="tfIDF" layoutX="209.0" layoutY="143.0" />
+                  <TextField fx:id="tfNom" layoutX="737.0" layoutY="143.0" />
+                  <TextField fx:id="tfNum" layoutX="209.0" layoutY="186.0" />
+                  <Button fx:id="btnAjouter" layoutX="294.0" layoutY="422.0" mnemonicParsing="false" onAction="#addFormation" text="Ajouter">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+                  <DatePicker fx:id="dpDate" layoutX="712.0" layoutY="97.0" />
+                  <Button fx:id="btnSup" layoutX="491.0" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#deleteFormation" text="supprimer">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnModif" layoutX="712.0" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#updateFormation" text="Modifer">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+                  <TableView fx:id="Table_Formations" layoutX="6.0" layoutY="242.0" onMouseClicked="#formation_select" prefHeight="162.0" prefWidth="1014.0">
+                     <columns>
+                        <TableColumn fx:id="a_ID" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="a_IDF" prefWidth="95.0" text="ID Formateur" />
+                        <TableColumn fx:id="a_Nom" prefWidth="154.0" text="Nom" />
+                        <TableColumn fx:id="a_Date" prefWidth="254.0" text="Date" />
+                        <TableColumn fx:id="a_NC" prefWidth="434.0" text="Numero Collaborateurs" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="btn_stat" layoutX="685.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#Statistique" prefHeight="45.0" prefWidth="201.0" text="Stats">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="Id_Recherchetf" layoutX="16.0" layoutY="14.0" promptText="chercher" />
+                  <Button fx:id="btn_RechercheID" layoutX="219.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#ChercherIDAM" text="Chercher" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

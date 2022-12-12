@@ -153,8 +153,9 @@ public class ApplicationPageController implements Initializable {
             pst.setInt(1, Integer.parseInt(idlaba.getText()));
             pst.setString(2, candlab.getText());
             pst.setString(3, offlab.getText());
-            pst.setString(5,(String)etat.getSelectionModel().getSelectedItem() );
             pst.setString(4, file_path.getText());
+            pst.setString(5,(String)etat.getSelectionModel().getSelectedItem() );
+            
             pst.executeUpdate();
             System.out.println("item ajouté avec succés");
             
