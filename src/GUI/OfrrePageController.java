@@ -58,7 +58,7 @@ public class OfrrePageController implements Initializable {
     @FXML
     private TableColumn<OffreEmploi, String> col_picture;
     @FXML
-    private ComboBox<?> skills;
+    private TextField skillsentry;
     @FXML
     private TextField idlab;
     @FXML
@@ -86,30 +86,13 @@ public class OfrrePageController implements Initializable {
     public OfrrePageController() {
         cnx2=MyConnection.getInstance().getCnx();
     }
-    private String[] comboSkills = {"Java", "Javascript", "Python", "PHP", "C"};
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       comboBox();
         showData();
     }    
-
-    @FXML
-    public void comboBox() {
-         List<String> list = new ArrayList<>();
-        
-        for(String data: comboSkills){
-            
-            list.add(data);
-            
-        }
-        
-        ObservableList dataList = FXCollections.observableArrayList(list);
-        
-        skills.setItems(dataList);
-    }
 
     @FXML
     private void insertImage(ActionEvent event) {
@@ -146,7 +129,7 @@ public class OfrrePageController implements Initializable {
             
             if(idlab.getText().isEmpty() | nomlab.getText().isEmpty()
                     | desclab.getText().isEmpty() 
-                    | skills.getSelectionModel().isEmpty()
+                    | skillsentry.getText().isEmpty()
                     | image_view.getImage() == null){
                 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -162,13 +145,13 @@ public class OfrrePageController implements Initializable {
             pst.setInt(1, Integer.parseInt(idlab.getText()));
             pst.setString(2, nomlab.getText());
             pst.setString(3, desclab.getText());
-            pst.setString(4,(String)skills.getSelectionModel().getSelectedItem() );
+            pst.setString(4,skillsentry.getText() );
             pst.setString(5, file_path.getText());
             pst.executeUpdate();
             System.out.println("item ajouté avec succés");
             
                 showData();
-                //clear();
+                clearo();
             }
         }catch(Exception e){}
     }
@@ -178,7 +161,7 @@ public class OfrrePageController implements Initializable {
         idlab.setText("");
         nomlab.setText("");
         desclab.setText("");
-        skills.getSelectionModel().clearSelection();
+        skillsentry.setText("");
         image_view.setImage(null);
         
     }
@@ -264,7 +247,7 @@ public class OfrrePageController implements Initializable {
         String sql = "UPDATE offreemploi SET `nomOffre` = '" 
                 + nomlab.getText() + "', `description` = '" 
                 + desclab.getText() + "', `skills` = '" 
-                + skills.getSelectionModel().getSelectedItem() 
+                + skillsentry.getText() 
                 + "', `picture` = '" + path 
                 + "' WHERE id_offre = '" + Integer.parseInt(idlab.getText()) + "'";
         
@@ -272,7 +255,7 @@ public class OfrrePageController implements Initializable {
             
             if(idlab.getText().isEmpty() | nomlab.getText().isEmpty()
                     | desclab.getText().isEmpty() 
-                    | skills.getSelectionModel().isEmpty()
+                    | skillsentry.getText().isEmpty()
                     | image_view.getImage() == null){
                 
                 Alert alert = new Alert(Alert.AlertType.ERROR);

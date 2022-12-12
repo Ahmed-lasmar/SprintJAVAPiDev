@@ -16,9 +16,9 @@ import java.sql.SQLException;
  * @author radhw
  */
 public class MyConnection {
-    public String url="jdbc:mysql://localhost:3306/pidev";
-    public String login="root";
-    public String pwd="";
+   final String url = "jdbc:mysql://localhost:3306/pidev";
+    final String login = "root";
+    final String pwd = "";
     public static MyConnection instance;
     
     Connection cnx;

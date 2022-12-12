@@ -399,7 +399,7 @@
                         <ImageView fx:id="image_viewa" fitHeight="137.0" fitWidth="269.0" layoutX="70.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true" />
                         <Button fx:id="insert_image" layoutX="132.0" layoutY="458.0" mnemonicParsing="false" onAction="#insertimage" prefHeight="31.0" prefWidth="111.0" text="insérer image" textFill="#0400ff" />
                         <Label fx:id="file_path" layoutX="77.0" layoutY="433.0" prefHeight="21.0" prefWidth="249.0" />
-                        <Label layoutX="57.0" layoutY="105.0" text="Candidat:" />
+                        <Label layoutX="57.0" layoutY="105.0" text="ID App:" />
                         <TextField fx:id="idlaba" layoutX="145.0" layoutY="100.0" />
                      </children>
                   </AnchorPane>

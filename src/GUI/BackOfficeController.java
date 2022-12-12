@@ -97,6 +97,8 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -485,7 +487,7 @@ public class BackOfficeController implements Initializable {
     private TableColumn<formateur, String> diplomeCA;
     @FXML
     private AnchorPane geformation1;
-
+    Application app=new Application();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         comboboxa();
@@ -503,6 +505,42 @@ public class BackOfficeController implements Initializable {
         loadTableFormation();//formation
         // loadTableFormation();// formation affiche all 
          loadTableFormateur();
+          ObservableList<Application> showList = dataList();
+        ObservableList TE=dataList();
+        FilteredList<Application> filteredData = new FilteredList<>(TE, b -> true);
+         
+         //2. Set the filter Predicate whenever the filter changes.
+         champ_recherche.textProperty().addListener((observable, oldValue, newValue) -> {
+         filteredData.setPredicate(app -> {
+         // If filter text is empty, display all persons.
+         
+         if (newValue == null || newValue.isEmpty()) {
+         return true;
+         }
+         
+         // Compare first name and last name of every person with filter text.
+         String lowerCaseFilter = newValue.toLowerCase();
+         
+         
+         if (app.getCandidat().toLowerCase().contains(lowerCaseFilter)) {
+         return true; // Filter matches last name.
+         }
+         else if (String.valueOf(app.getOffre()).indexOf(lowerCaseFilter)!=-1) {
+         return true;}
+ 
+         else return String.valueOf(app.getEtat()).contains(lowerCaseFilter);
+         
+         
+         });
+         });
+         SortedList<Application> sortedData = new SortedList<>(filteredData);
+         
+         // 4. Bind the SortedList comparator to the TableView comparator.
+         // 	  Otherwise, sorting the TableView would have no effect.
+         sortedData.comparatorProperty().bind(table_view.comparatorProperty());
+         
+         // 5. Add sorted (and filtered) data to the table.
+         table_view.setItems(sortedData);
     }
 
     @FXML
@@ -754,8 +792,8 @@ public class BackOfficeController implements Initializable {
                 pst = cnx2.prepareStatement(sql);
                 pst.setString(1, candlab.getText());
                 pst.setString(2, offlab.getText());
-                pst.setString(3, (String) etat.getSelectionModel().getSelectedItem());
-                pst.setString(4, file_path.getText());
+                pst.setString(4, (String) etat.getSelectionModel().getSelectedItem());
+                pst.setString(3, file_path.getText());
                 pst.executeUpdate();
                 System.out.println("item ajouté avec succés");
 
@@ -939,40 +977,38 @@ public class BackOfficeController implements Initializable {
 
     @FXML
     private void ajouterOffre(ActionEvent event) {
-        String sql = "INSERT INTO offreemploi VALUES (?,?,?,?)";
-
-        try {
-
-            if (nomlab.getText().isEmpty()
-                    | desclab.getText().isEmpty()
+        String sql = "INSERT INTO offreemploi VALUES (?,?,?,?,?)";
+        
+        try{
+            
+            if(nomlab.getText().isEmpty()
+                    | desclab.getText().isEmpty() 
                     | skills.getSelectionModel().isEmpty()
-                    | image_view.getImage() == null) {
-
+                    | image_view.getImage() == null){
+                
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-
+                
                 alert.setTitle("message d'erreur");
                 alert.setHeaderText(null);
                 alert.setContentText("entrer tous les données");
                 alert.showAndWait();
-
-            } else {
-                PreparedStatement pst;
-                pst = cnx2.prepareStatement(sql);
-
-                pst.setString(1, nomlab.getText());
-                pst.setString(2, desclab.getText());
-                pst.setString(4, (String) skills.getSelectionModel().getSelectedItem());
-                pst.setString(3, file_path1.getText());
-                pst.executeUpdate();
-                System.out.println("item ajouté avec succés");
-
+                
+            }else{
+            PreparedStatement pst;
+            pst = cnx2.prepareStatement(sql);
+            pst.setString(1, idlab.getText());
+            pst.setString(2, nomlab.getText());
+            pst.setString(3, desclab.getText());
+            pst.setString(4,(String)skills.getSelectionModel().getSelectedItem() );
+            pst.setString(5, file_path1.getText());
+            pst.executeUpdate();
+            System.out.println("item ajouté avec succés");
+            
                 showDatao();
                 clearo();
             }
-        } catch (Exception e) {
-        }
+        }catch(Exception e){}
     }
-
     public void clearo() {
 
         idlab.setText("");

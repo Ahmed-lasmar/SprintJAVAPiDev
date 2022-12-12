@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class MaConnexion {
     //const
-    final String URL = "jdbc:mysql://localhost:3306/pidev";
+ final String URL = "jdbc:mysql://localhost:3306/pidev";
     final String USR = "root";
     final String PWD = "";
 
